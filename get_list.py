@@ -66,25 +66,6 @@ def create_matrix_from_values(values):
 #print(matrix)
 
 
-def concatenate_matrices(matrix1, matrix2, matrix3, axis=0):
-    """
-    Concatenates three matrices along a specified axis and returns separate variables.
-    
-    Parameters:
-    - matrix1, matrix2, matrix3: numpy arrays to be concatenated.
-    - axis: Axis along which to concatenate (0 for vertical, 1 for horizontal).
-    
-    Returns:
-    - Three numpy arrays resulting from the concatenation.
-    """
-    concatenated_matrix = np.concatenate((matrix1, matrix2, matrix3), axis=axis)
-    split_size = concatenated_matrix.shape[axis] // 3
-    if axis == 0:
-        part1, part2, part3 = np.split(concatenated_matrix, [split_size, 2*split_size])
-    else:
-        part1, part2, part3 = np.split(concatenated_matrix, [split_size, 2*split_size], axis=axis)
-    return part1, part2, part3
-
 
 def normalize_matrix(matrix):
     norm = np.linalg.norm(matrix)
@@ -95,14 +76,14 @@ def normalize_matrix(matrix):
 
 # # Input matrices
 # print("Input matrix 1:")
-matrix1 = create_matrix_from_values(get_params_er(5,3))
+matrix1 = create_matrix_from_values(get_params_er(3,5))
 # print("Input matrix 2:")
 matrix2 = create_matrix_from_values(get_params_er(2,3))
 # print("Input matrix 3:")
 matrix3 = create_matrix_from_values(get_params_er(4,5))
 
 # Concatenate matrices vertically
-part1, part2, part3 = concatenate_matrices(matrix1, matrix2, matrix3, axis=0)
+#part1, part2, part3 = concatenate_matrices(matrix1, matrix2, matrix3, axis=0)
 
 # Now you have three variables part1, part2, and part3 for manipulation.
 #print ("here: ", part1)
@@ -111,9 +92,9 @@ part1, part2, part3 = concatenate_matrices(matrix1, matrix2, matrix3, axis=0)
 
 
 # Now square the concatenated matrix
-squared_part1 = square_matrix(part1)
-squared_part2 = square_matrix(part2)
-squared_part3 = square_matrix(part3)
+squared_part1 = square_matrix(matrix1)
+squared_part2 = square_matrix(matrix2)
+squared_part3 = square_matrix(matrix3)
 
 # Print the squared matrix
 # print("Squared Part 1: " + str(squared_part1))

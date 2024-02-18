@@ -55,9 +55,12 @@ normalize(squared_part3)
 
 
 
-
-
-nopa_list = [norm_matrix[0][0], norm_matrix[0][1], (norm_matrix[0][0] + norm_matrix[0][1])]
-da_list = [norm_matrix[1][0], norm_matrix[2][0], (norm_matrix[1][0] + norm_matrix[2][0])/2]
-trees = [norm_matrix[1][1], norm_matrix[2][1], (norm_matrix[1][1] + norm_matrix[2][1])/2]
+ans_da_pre = round(((norm_matrix[1][0] * norm_matrix[0][1]) + (norm_matrix[2][0] * norm_matrix[0][0])),3)
+ans_da = round(ans_da_pre,2)
+ans_tree = round(((norm_matrix[1][1] * norm_matrix[0][1]) + (norm_matrix[2][1] * norm_matrix[0][0])), 2)
+nopa_list = [norm_matrix[0][1], norm_matrix[0][0], (norm_matrix[0][0] + norm_matrix[0][1])]
+da_list = [norm_matrix[1][0], norm_matrix[2][0], ans_da]
+if ans_tree > (1 - ans_da):
+    ans_tree = (1 - ans_da)
+trees = [norm_matrix[1][1], norm_matrix[2][1], ans_tree]
 draw_table_ahp(nopa_list, da_list, trees)
